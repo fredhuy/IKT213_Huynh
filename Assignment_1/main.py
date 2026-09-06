@@ -19,7 +19,6 @@ def show_image(image):
 
 #TASK V
 def camera_thing():
-    import cv2
 
     # Open the default camera
     cam = cv2.VideoCapture(0)
@@ -62,10 +61,10 @@ def camera_thing():
     cv2.destroyAllWindows()
 
 def main():
-    #print_image_information(iris_image)
+    print_image_information(iris_image)
     #show_image(iris_image)
 
-    camera_thing()
+    #camera_thing()
 
 
 main()
