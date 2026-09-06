@@ -57,9 +57,7 @@ def hsv(image):
 def hue_shifted(image, emptyPictureArray, hue):
     cv2.imshow("image", image)
 
-    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-
-    emptyPictureArray[:] = hsv_image[:] + hue
+    emptyPictureArray[:] = image[:] + hue
 
     cv2.imshow("hue_shifted", emptyPictureArray)
 
@@ -105,13 +103,13 @@ emptyPicture = np.zeros((imgHeight, imgWidth, 3), dtype=np.uint8)
 #hsv(img)
 
 # == 7. Color shifting ==
-#hue_shifted(img, emptyPicture, 40)
+hue_shifted(img, emptyPicture, 40)
 
 # == 8. Smoothing ==
 #smoothing(img)
 
 # == 9. Rotation ==
-rotation(img, 180)
+#rotation(img, 180)
 
 
 cv2.waitKey(0)
