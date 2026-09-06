@@ -103,7 +103,7 @@ emptyPicture = np.zeros((imgHeight, imgWidth, 3), dtype=np.uint8)
 #hsv(img)
 
 # == 7. Color shifting ==
-hue_shifted(img, emptyPicture, 40)
+hue_shifted(img, emptyPicture, 50)
 
 # == 8. Smoothing ==
 #smoothing(img)
