@@ -15,9 +15,8 @@ def template_match(image, template):
     loc = np.where(res >= threshold)
 
     for pt in zip(*loc[::-1]):
-        cv2.rectangle(image, pt, (pt[0] + w, pt[1] + h), (0, 0, 255), 1)
+        cv2.rectangle(img, pt, (pt[0] + w, pt[1] + h), (0, 0, 255), 1)
 
-    cv2.imwrite('images/res.png', image)
-
+    cv2.imwrite('images/shapes_matched.png', img)
 
 template_match(img_gray, template_gray)

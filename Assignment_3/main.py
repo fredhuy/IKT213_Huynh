@@ -1,6 +1,4 @@
 import cv2
-import numpy as np
-
 
 img = cv2.imread('images/lambo.png')
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -26,7 +24,7 @@ def sobel_edge_detection(image):
 
 
     cv2.imshow('Sobel gradient magnitude', sobelFinalized)
-    cv2.imwrite('images/sobel_lambo.png', sobelx)
+    cv2.imwrite('images/sobel_lambo.png', sobelFinalized)
 
     cv2.waitKey(0)
 
@@ -36,13 +34,27 @@ def canny_edge_detection(image, threshold_1, threshold_2):
     edges = cv2.Canny(image=img_gaussian, threshold1=threshold_1, threshold2=threshold_2)
 
     cv2.imshow('Canny Edge Detection', edges)
+    cv2.imwrite('images/canny_lambo.png', edges)
     cv2.waitKey(0)
 
 
+def resize(image, scale_factor: int, up_or_down: str):
+    print("nothing")
+
+    rows, cols, _channels = map(int, image.shape)
 
 
+    if up_or_down == "up":
+        image = cv2.pyrUp(image, dstsize=(scale_factor * cols, scale_factor * rows))
+    elif up_or_down == "down":
+        image = cv2.pyrDown(image, dstsize=(cols // scale_factor, rows // scale_factor))
 
+    cv2.imshow('Resized Image', image)
+    cv2.imwrite('images/downsized_lambo.png', image)
+    cv2.waitKey(0)
 
-#sobel_edge_detection(img_gray)
+resize(img, scale_factor=2, up_or_down="down")
+
+sobel_edge_detection(img_gray)
 
 canny_edge_detection(img_gray, 100, 150)
