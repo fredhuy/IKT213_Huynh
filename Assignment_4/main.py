@@ -54,6 +54,16 @@ def sift(image_to_align, reference_image, max_features, good_match_precent):
         matchesMask = mask.ravel().tolist()
 
         h, w = reference_image.shape
+
+        aligned = cv2.warpPerspective(
+            image_to_align,
+            M,
+            (w, h),
+            flags=cv2.INTER_LINEAR | cv2.WARP_INVERSE_MAP
+        )
+
+        cv2.imwrite("SavedImages/aligned.png", aligned)
+
         pts = np.float32([[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]]).reshape(-1, 1, 2)
         dst = cv2.perspectiveTransform(pts, M)
 
